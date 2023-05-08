@@ -83,6 +83,67 @@ def test(email):
     send_email(email, "Testing", template)
     return "email sent"
 
+@app.route("/adminClearQueue", methods=['POST'])
+@admin_authorizer
+def adminClearQueue():
+    try:
+        waitlist = Waitlist.query.all()
+        for customer in waitlist:
+            db.session.delete(customer)
+            db.session.commit()
+        db.session.close()
+        response = {
+            "msg": "Waitlist was successfully cleared", "status": 202}
+        return jsonify(response)
+
+    except:
+        response = {
+            "msg": "Something went wrong", "status": 404}
+        return jsonify(response)
+
+
+
+@app.route("/adminTableReady", methods=['POST'])
+@admin_authorizer
+def adminTableReady():
+    name = request.json['name']
+    email = request.json['email']
+    try:
+        user = Waitlist.query.filter_by(email=email).first()
+        db.session.delete(user)
+        db.session.commit()
+        db.session.close()
+
+        template = f"{name}, your table is ready. Please speak to a host and they will seat you."
+        send_email(email, "Your table is ready", template)
+        response = {
+            "msg": f"{name} has been removed from the waitlist and has been notified that their table is ready.", "status": 202}
+        return jsonify(response)
+
+    except:
+        response = {
+            "msg": f"{name} has already been removed from the waitlist and/or seated", "status": 202}
+        return jsonify(response)
+
+@app.route("/adminRemoveUser", methods=['DELETE'])
+@admin_authorizer
+def adminRemoveUser():
+    name = request.json['name']
+    email = request.json['email']
+    try:
+        user = Waitlist.query.filter_by(email=email).first()
+        db.session.delete(user)
+        db.session.commit()
+        db.session.close()
+
+        response = {
+            "msg": f"{name} has been removed from the waitlist", "status": 202}
+        return jsonify(response)
+
+    except:
+        response = {
+            "msg": f"{name} has already been removed from the waitlist", "status": 202}
+        return jsonify(response)
 
 @app.route("/leavequeue/<token>", methods=['DELETE'])
 def leavequeue(token):
@@ -111,7 +172,7 @@ def leavequeue(token):
         return jsonify(response)
 
 
-@app.route("/admingetwaitlist", methods=['GET'])
+@app.route("/adminGetWaitlist", methods=['GET'])
 @admin_authorizer
 def admingetwaitlist():
     waitlist = Waitlist.query.order_by(Waitlist.timestamp).all()
@@ -138,7 +199,7 @@ def getwaitlist(token):
             return jsonify(response)
 
 
-@app.route("/adminjoinwaitlist", methods=['POST'])
+@app.route("/adminJoinWaitlist", methods=['POST'])
 @admin_authorizer
 def adminjoinwaitlist():
     # request_data = request.get_json()

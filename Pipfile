@@ -8,6 +8,7 @@ flask = "*"
 requests = "*"
 pyjwt = "*"
 flask-mail = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 
