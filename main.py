@@ -223,7 +223,7 @@ def adminjoinwaitlist():
         addeduser = Waitlist.query.filter_by(email=email).first()
         client_token = secret.getToken(str(addeduser.id), name, email)
         client_url = url_for('getwaitlist', token=client_token)
-        url = '127.0.0.1:5000'+str(client_url)
+        url = 'https://restaurant-waitlist.herokuapp.com'+str(client_url)
         token = {"msg": f"{name} was added to the waitlist",
                  "client_token": client_token, "status": 200}
         template = f"{name}, you have been added to the waitlist.<br><br>Please use this url to see your place in the queue:<br>{url}"
@@ -237,7 +237,7 @@ def adminjoinwaitlist():
             client_token = secret.getToken(
                 str(addeduser.id), str(addeduser.name), email)
             client_url = url_for('getwaitlist', token=client_token)
-            url = '127.0.0.1:5000'+str(client_url)
+            url = 'https://restaurant-waitlist.herokuapp.com'+str(client_url)
             response = {"msg": "user is already in the waitlist",
                         "client_token": client_token, "status": 202}
             template = f"{name}, you have already been added to the waitlist.<br><br>Please use this url to see your place in the queue:<br>{url}"
