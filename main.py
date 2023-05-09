@@ -173,7 +173,7 @@ def leavequeue(token):
 @app.route("/adminMsgCustomer", methods=['POST'])
 @admin_authorizer
 def adminMsgCustomer():
-    email = request.json['email']
+    email = request.json['customer_email']
     adminMsg = request.json['adminMsg']
     if email == '':
         response = {"msg": "No customer email was provided", "status": 400}
