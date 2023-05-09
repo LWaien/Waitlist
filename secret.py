@@ -1,6 +1,5 @@
 import jwt
 import datetime
-from base64 import b64decode
 
 ADMIN_KEY = "apipassword"
 exp = datetime.datetime.utcnow() + datetime.timedelta(minutes=60)

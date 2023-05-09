@@ -76,7 +76,7 @@ def admin_authorizer(f):
         return f(*args, **kwargs)
     return decorated
 
-
+#test route used for trying new features
 @app.route('/testing/<email>')
 def test(email):
     template = f"Testingbody.<br><br>Thanks<br>The Restaurant Team"
