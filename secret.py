@@ -2,7 +2,7 @@ import jwt
 import datetime
 
 ADMIN_KEY = "apipassword"
-exp = datetime.datetime.utcnow() + datetime.timedelta(minutes=60)
+exp = datetime.datetime.utcnow() + datetime.timedelta(minutes=180)
 privatekey = "privatejwtkey"
 publickey = "publicrestkey"
 emailpass = "iaeu swuj ovop raxu"

@@ -170,6 +170,27 @@ def leavequeue(token):
             "msg": f"{name} has already been removed from the waitlist", "status": 202}
         return jsonify(response)
 
+@app.route("/adminMsgCustomer", methods=['POST'])
+@admin_authorizer
+def adminMsgCustomer():
+    email = request.json['email']
+    adminMsg = request.json['adminMsg']
+    if email == '':
+        response = {"msg": "No customer email was provided", "status": 400}
+        return jsonify(response)
+    if adminMsg == '':
+        response = {"msg": "No customer message was provided", "status": 400}
+        return jsonify(response)
+    try:
+        user = Waitlist.query.filter_by(email=email).first()
+        print(user.id)
+        template = str(adminMsg)
+        send_email(email, "You have a message from the <restaurant name> staff", template)
+        response = {"msg": "Email was sent to the customer", "status": 202}
+        return jsonify(response)
+    except:
+        response = {"msg": "Customer is not in the queue", "status": 400}
+        return jsonify(response)
 
 @app.route("/adminGetWaitlist", methods=['GET'])
 @admin_authorizer
