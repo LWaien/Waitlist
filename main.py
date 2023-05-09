@@ -8,7 +8,6 @@ import time
 import requests
 from dataclasses import dataclass
 from functools import wraps
-import tokenizer
 import secret
 
 # User endpoints simply require a token to be supplied at the end of urls as such /<token>.
@@ -22,7 +21,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = "45732906"
+app.config["SECRET_KEY"] = "supersecret"
 app.config["SESSION_COOKIE_NAME"] = "Waitlist"
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
