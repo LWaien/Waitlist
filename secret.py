@@ -17,6 +17,7 @@ def getToken(id, name, useremail):
 def decodeToken(encoded):
     try:
         token = jwt.decode(encoded, privatekey, algorithms=["HS256"])
+        print(token)
         return token, False
     except:
         return None, True
