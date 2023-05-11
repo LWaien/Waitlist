@@ -5,7 +5,7 @@ ADMIN_KEY = "apipassword"
 exp = datetime.datetime.utcnow() + datetime.timedelta(minutes=120)
 privatekey = "privatejwtkey"
 publickey = "publicrestkey"
-emailpass = ""
+emailpass = "iaeu swuj ovop raxu"
 
 
 def getToken(id, name, useremail):
