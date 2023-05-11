@@ -1,4 +1,4 @@
-Admin Endpoints
+Admin Endpoints:
 All Admin endpoints are to be used by hypothetical restaurant staff. Requests are designed to manage a queue of customers waiting to be seated.
 All Admin endpoints require an adminkey to be passed as a part of the JSON body. This key is currently "apipassword" but a feature that allows the admin to update their password will be added soon.
 Admin endpoints are preceded by a lowercase "admin" to denote its authorization status.
