@@ -2,10 +2,10 @@ import jwt
 import datetime
 
 ADMIN_KEY = "apipassword"
-exp = datetime.datetime.utcnow() + datetime.timedelta(minutes=180)
+exp = datetime.datetime.utcnow() + datetime.timedelta(minutes=120)
 privatekey = "privatejwtkey"
 publickey = "publicrestkey"
-emailpass = "iaeu swuj ovop raxu"
+emailpass = ""
 
 
 def getToken(id, name, useremail):
