@@ -9,6 +9,7 @@ import requests
 from dataclasses import dataclass
 from functools import wraps
 import secret
+from flask_cors import CORS, cross_origin
 
 # User endpoints simply require a token to be supplied at the end of urls as such /<token>.
 # All admin endpoints are preceeded by the word admin and they all require a request body as specified in docs
@@ -31,6 +32,9 @@ app.config['MAIL_PASSWORD'] = secret.emailpass
 app.config['MAIL_DEFAULT_SENDER'] = 'lawaien14@gmail.com'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 mail = Mail(app)
 
 

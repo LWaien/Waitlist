@@ -10,6 +10,7 @@ pyjwt = "*"
 flask-mail = "*"
 flask-sqlalchemy = "*"
 gunicorn = "*"
+flask-cors = "*"
 
 [dev-packages]
 
