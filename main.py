@@ -253,7 +253,12 @@ def adminjoinwaitlist():
         token = {"msg": f"{name} was added to the waitlist",
                  "client_token": client_token, "status": 200}
         template = f"{name}, you have been added to the waitlist.<br><br>Please use this url to see your place in the queue:<br>{url}"
-        send_email(email, "You have been added to the waitlist", template)
+        try:
+            send_email(email, "You have been added to the waitlist", template)
+        except:
+            response = {"msg": "Email was not able to be sent to the customer. However, the customer has been added to the waitlist",
+                        "client_token": client_token, "status": 202}
+            return jsonify(response)
         return jsonify(token)
     except:
         try:
@@ -267,7 +272,12 @@ def adminjoinwaitlist():
             response = {"msg": "user is already in the waitlist",
                         "client_token": client_token, "status": 202}
             template = f"{name}, you have already been added to the waitlist.<br><br>Please use this url to see your place in the queue:<br>{url}"
-            send_email(email, "Your waitlist link", template)
+            try:
+                send_email(email, "Your waitlist link", template)
+            except:
+                response = {"msg": "Email was not able to be sent to the customer. However, the customer has been added to the waitlist",
+                        "client_token": client_token, "status": 202}
+                return jsonify(response)
             return jsonify(response)
         except:
             # if the first two failed, something went wrong with the database
