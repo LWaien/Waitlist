@@ -189,11 +189,11 @@ def adminMsgCustomer():
         response = {"msg": "Email was sent to the customer", "status": 202}
         return jsonify(response)
     except:
-        response = {"msg": "Customer is not in the queue", "status": 400}
+        response = {"msg": "The provided customer email is not in the queue", "status": 400}
         return jsonify(response)
 
 @app.route("/adminGetWaitlist", methods=['GET'])
-@admin_authorizer
+#@admin_authorizer
 def admingetwaitlist():
     waitlist = Waitlist.query.order_by(Waitlist.timestamp).all()
     response = {"current_user": "admin", "waitlist": waitlist}
