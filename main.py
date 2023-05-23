@@ -203,6 +203,8 @@ def admingetwaitlist():
 @app.route("/getwaitlist/<token>", methods=['GET'])
 def getwaitlist(token):
     current_user, err = secret.decodeToken(token)
+    print(current_user)
+    print(current_user['useremail'])
     email = current_user['useremail']
     if err is True:
         return "invalid token"
