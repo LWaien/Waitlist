@@ -35,6 +35,8 @@ app.config['MAIL_USE_SSL'] = True
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['CORS_ALLOW_HEADERS'] = '*'
+app.config['CORS_ORIGINS'] = '*'
+
 mail = Mail(app)
 
 
