@@ -229,9 +229,9 @@ def getwaitlist(token):
 @admin_authorizer
 def adminjoinwaitlist():
     # request_data = request.get_json()
-    name = request.json['name']
-    email = request.json['email']
-    adminkey = request.json['adminkey']
+    name = request.form['name']
+    email = request.form['email']
+    adminkey = request.form['adminkey']
 
     if adminkey != secret.ADMIN_KEY:
         response = {"msg": "access denied", "status": 404}
