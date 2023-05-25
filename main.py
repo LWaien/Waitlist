@@ -130,7 +130,7 @@ def adminTableReady():
             "msg": f"{name} has already been removed from the waitlist and/or seated", "status": 202}
         return jsonify(response)
 
-@app.route("/adminRemoveUser", methods=['DELETE'])
+@app.route("/adminRemoveUser", methods=['POST'])
 @admin_authorizer
 def adminRemoveUser():
     name = request.json['name']
