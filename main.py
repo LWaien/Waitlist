@@ -142,12 +142,12 @@ def adminRemoveUser():
         db.session.close()
 
         response = {
-            "msg": f"{name} has been removed from the waitlist", "status": 202}
+            "msg": "User has been removed from the waitlist", "status": 202}
         return jsonify(response)
 
     except:
         response = {
-            "msg": f"{name} has already been removed from the waitlist", "status": 203}
+            "msg": "User has already been removed from the waitlist", "status": 203}
         return jsonify(response)
 
 @app.route("/leavequeue/<token>", methods=['DELETE'])
