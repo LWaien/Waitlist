@@ -1,6 +1,6 @@
 # Admin Endpoints
 
-All Admin endpoints are to be used by hypothetical restaurant staff. Requests are designed to manage a queue of customers waiting to be seated. All Admin endpoints require an `adminkey` to be passed as a part of the JSON body. This key is currently set to "apipassword," but a feature that allows the admin to update their password will be added soon. Admin endpoints are preceded by a lowercase "admin" to denote their authorization status.
+All Admin endpoints are to be used by hypothetical restaurant staff. Requests are designed to manage a queue of customers waiting to be seated. All Admin endpoints require an `adminkey` to be passed as a part of the JSON body. This key is currently set to "apipassword," but a feature that allows the admin to update their password will be added soon. Admin endpoints are preceded by a lowercase "admin" to denote their authorization status. Please note tha the emailing function is working but disabled due to security reasons. (The email service can be made functional by providing an email authorization key) 
 
 ## `POST /adminJoinWaitlist`
 
