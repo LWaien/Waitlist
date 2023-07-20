@@ -66,3 +66,25 @@ All Admin endpoints are to be used by hypothetical restaurant staff. Requests ar
   - `adminMsg`: The message to be sent to the customer.
 - **System Action:** Emails the customer with a custom message.
 - **Returns:** Confirmation that the email was sent.
+
+
+# Client Endpoints
+
+Designed to accept client tokens in the URL and give customers the ability to both see their place in the waitlist or willingly leave the queue.
+These endpoints are designed to allow the system to provide customers with a URL to access the waitlist in an email.
+
+## `DELETE /leavequeue/<token>`
+
+- **Endpoint:** [https://restaurant-waitlist.herokuapp.com/leavequeue/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5Njc3OH0.qikXNiRo1d0Tshi-ubEFJPevCauHVvKCm3lab91p3rE](https://restaurant-waitlist.herokuapp.com/leavequeue/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5Njc3OH0.qikXNiRo1d0Tshi-ubEFJPevCauHVvKCm3lab91p3rE)
+- **Request Method:** DELETE
+- **Description:** Allows customers to willingly leave the waitlist by using their client token.
+- **Returns:** No specific return value, but the customer will be removed from the waitlist.
+
+## `GET /getwaitlist/<token>`
+
+- **Endpoint:** [https://restaurant-waitlist.herokuapp.com/getwaitlist/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5NTgzOH0.drIv1uG2E2ZchvHQ9f-H0K-CjeFdOCA7_2WvgcotQ0c](https://restaurant-waitlist.herokuapp.com/getwaitlist/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5NTgzOH0.drIv1uG2E2ZchvHQ9f-H0K-CjeFdOCA7_2WvgcotQ0c)
+- **Request Method:** GET
+- **Description:** Allows customers to see their place in the waitlist using their client token.
+- **Returns:** The customer's place in the waitlist and related information.
+
+Please note that the token in the URL is a placeholder and should be replaced with the actual client token obtained from the `/adminJoinWaitlist` endpoint or another relevant authentication process.
