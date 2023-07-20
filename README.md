@@ -68,6 +68,9 @@ All Admin endpoints are to be used by hypothetical restaurant staff. Requests ar
 - **Returns:** Confirmation that the email was sent.
 
 
+
+
+
 # Client Endpoints
 
 Designed to accept client tokens in the URL and give customers the ability to both see their place in the waitlist or willingly leave the queue.
