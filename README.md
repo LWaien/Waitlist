@@ -71,18 +71,19 @@ All Admin endpoints are to be used by hypothetical restaurant staff. Requests ar
 # Client Endpoints
 
 Designed to accept client tokens in the URL and give customers the ability to both see their place in the waitlist or willingly leave the queue.
-These endpoints are designed to allow the system to provide customers with a URL to access the waitlist in an email.
+These endpoints are designed to allow the system to provide customers with a URL to access the waitlist in an email. Client tokens are automatically added to the url and emailed to the customer
+upon joining the queue. A front end to present this client information is currently being built. 
 
 ## `DELETE /leavequeue/<token>`
 
-- **Endpoint:** [https://restaurant-waitlist.herokuapp.com/leavequeue/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5Njc3OH0.qikXNiRo1d0Tshi-ubEFJPevCauHVvKCm3lab91p3rE](https://restaurant-waitlist.herokuapp.com/leavequeue/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5Njc3OH0.qikXNiRo1d0Tshi-ubEFJPevCauHVvKCm3lab91p3rE)
+- **Endpoint:** [https://restaurant-waitlist.herokuapp.com/leavequeue/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5Njc3OH0.qikXNiRo1d0Tshi-ubEFJPevCauHVvKCm3lab91p3rE](https://restaurant-waitlist.herokuapp.com/leavequeue/<token>)
 - **Request Method:** DELETE
 - **Description:** Allows customers to willingly leave the waitlist by using their client token.
 - **Returns:** No specific return value, but the customer will be removed from the waitlist.
 
 ## `GET /getwaitlist/<token>`
 
-- **Endpoint:** [https://restaurant-waitlist.herokuapp.com/getwaitlist/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5NTgzOH0.drIv1uG2E2ZchvHQ9f-H0K-CjeFdOCA7_2WvgcotQ0c](https://restaurant-waitlist.herokuapp.com/getwaitlist/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5NTgzOH0.drIv1uG2E2ZchvHQ9f-H0K-CjeFdOCA7_2WvgcotQ0c)
+- **Endpoint:** [https://restaurant-waitlist.herokuapp.com/getwaitlist/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5IiwibmFtZSI6IkxvZ2FuIiwidXNlcmVtYWlsIjoibGF3YWllbjE0QGdtYWlsLmNvbSIsImV4cCI6MTY4MzQ5NTgzOH0.drIv1uG2E2ZchvHQ9f-H0K-CjeFdOCA7_2WvgcotQ0c](https://restaurant-waitlist.herokuapp.com/getwaitlist/<token>)
 - **Request Method:** GET
 - **Description:** Allows customers to see their place in the waitlist using their client token.
 - **Returns:** The customer's place in the waitlist and related information.
